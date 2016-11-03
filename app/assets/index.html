@@ -10,10 +10,12 @@
   <body>
     <header>
       <h1>My ToDo List</h1>
+      <h2 ng-controller="TodosCountCtrl as todosCountCtrl">Todos Left: {{ todosCountCtrl.notCompletedCount() }}</h2>
+      <h3 ng-controller="PeopleCountCtrl as peopleCountCtrl">Number of people in system: {{ peopleCountCtrl.peopleCount() }}</h3>
     </header>
     <main>
       <div ng-controller="PeopleCtrl as peopleCtrl">
-        <div ng-repeat="person in peopleCtrl.people">
+        <div ng-repeat="person in peopleCtrl.people()">
           <h2>{{person.name}}</h2>
           <ul ng-controller="TodoListCtrl as todoList">
             <li ng-repeat="todo in todoList.todos">

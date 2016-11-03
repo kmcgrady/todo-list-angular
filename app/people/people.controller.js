@@ -1,13 +1,19 @@
 class PeopleCtrl {
-  constructor() {
+  constructor(peopleSvc) {
+    this.peopleSvc = peopleSvc;
     this.nameToAdd = '';
-    this.people = [];
   }
 
   addPerson(personName) {
-    this.people.push({ name: personName });
+    this.peopleSvc.addPerson(personName);
     this.nameToAdd = '';
   }
+
+  people() {
+    return this.peopleSvc.people;
+  }
 }
+
+PeopleCtrl.$inject = ['PeopleService']
 
 export default PeopleCtrl;

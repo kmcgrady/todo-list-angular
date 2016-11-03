@@ -1,16 +1,22 @@
 class TodoListCtrl {
-  constructor() {
+  constructor(todosSvc) {
+    this.todosSvc = todosSvc;
     this.todoToAdd = '';
     this.todos = [];
   }
 
   addTodo(todoText) {
-    this.todos.push({
+    const todo = {
       completed: false,
       text: todoText
-    });
+    };
+
+    this.todos.push(todo);
+    this.todosSvc.addTodo(todo);
     this.todoToAdd = '';
   }
 }
+
+TodoListCtrl.$inject = ['TodosService'];
 
 export default TodoListCtrl;
